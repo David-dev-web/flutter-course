@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter Masterclass | Offline</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <!-- External Assets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dark-mode">
+    <div id="app">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">FLUTTER<span>.</span></div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="main-progress"></div>
+                    <span id="progress-text">0%</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item active" data-target="home">Home</li>
+                <li class="nav-item-header">Einführung</li>
+                <li class="nav-item" data-target="dart-basics">Dart Grundlagen</li>
+                <li class="nav-item" data-target="flutter-intro">Was ist Flutter?</li>
+                <li class="nav-item-header">Grundlagen</li>
+                <li class="nav-item" data-target="widgets-basics">Widget Basics</li>
+                <li class="nav-item" data-target="layout">Layout & UI</li>
+                <li class="nav-item-header">Projekte</li>
+                <li class="nav-item" data-target="project-calc">Rechner App</li>
+                <li class="nav-item" data-target="project-weather">Wetter App</li>
+                <li class="nav-item" data-target="project-music">Music Player</li>
+                <li class="nav-item" data-target="project-todo">Todo App</li>
+                <li class="nav-item-header">Extra</li>
+                <li class="nav-item" data-target="roadmap">Roadmap</li>
+                <li class="nav-item" data-target="terminal">Terminal UI</li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <header class="top-bar">
+                <div class="search-bar">
+                    <input type="text" placeholder="Suche nach Themen...">
+                </div>
+                <div class="user-stats">
+                    <div class="achievement-badge" title="Erfolge">🏆 <span id="achievement-count">0</span></div>
+                    <div class="streak-badge" title="Lernserie">🔥 <span id="streak-count">1</span></div>
+                </div>
+            </header>
+
+            <div id="main-view" class="view-container">
+                <!-- Content will be injected here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Achievement Toast -->
+    <div id="toast-container"></div>
+
+    <!-- Core Data -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/widgets_content.js"></script>
+    <!-- UI Components (Terminal etc.) -->
+    <script src="assets/js/ui.js"></script>
+    <!-- App Logic (depends on data and ui) -->
+    <script src="assets/js/app.js"></script>
+    <!-- External Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-dart.min.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
