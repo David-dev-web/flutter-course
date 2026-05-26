@@ -40,9 +40,30 @@ function setupGlobalEvents() {
                     return;
                 }
                 navigateTo(target);
+                
+                // Auf Mobile: Sidebar nach Klick schließen
+                if (window.innerWidth <= 1024) {
+                    toggleSidebar(false);
+                }
             }
         });
     });
+
+    // Hamburger Menu Toggle
+    const menuBtn = document.getElementById('menu-toggle');
+    let overlay = document.querySelector('.sidebar-overlay');
+    
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'sidebar-overlay';
+        document.body.appendChild(overlay);
+    }
+
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => toggleSidebar());
+    }
+
+    overlay.addEventListener('click', () => toggleSidebar(false));
 
     // Suche (Platzhalter-Funktionalität)
     const searchInput = document.querySelector('.search-bar input');
@@ -53,6 +74,18 @@ function setupGlobalEvents() {
             }
         });
     }
+}
+
+function toggleSidebar(force) {
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.sidebar-overlay');
+    if (!sidebar || !overlay) return;
+
+    const isOpen = sidebar.classList.contains('open');
+    const shouldOpen = force !== undefined ? force : !isOpen;
+    
+    sidebar.classList.toggle('open', shouldOpen);
+    overlay.classList.toggle('active', shouldOpen);
 }
 
 /**
@@ -169,14 +202,6 @@ function attachDynamicListeners() {
             }
         });
     });
-
-    // Start Kurs Button (Home)
-    const startBtn = document.querySelector('.cta-btn');
-    if (startBtn && state.currentView === 'home') {
-        // Da der Button im HTML-String ist, wird er hier gebunden
-        // falls er nicht schon ein inline onclick hat.
-        // Wir nutzen hier lieber die explizite Bindung.
-    }
 }
 
 /**
@@ -335,3 +360,4 @@ window.showSolution = function(id) {
 };
 
 window.navigateTo = navigateTo; // Global verfügbar machen
+window.toggleSidebar = toggleSidebar;
